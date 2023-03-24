@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trivia App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="instruction-section">
@@ -19,7 +20,7 @@
       <div id="category">
         <label for="category">Category</label>
         <select name="category" id="category-select">
-          <option disabled selected>Select Category<option>
+          <option disabled selected>Select Category</option>
           <option value="9">General Knowledge</option>
           <option value="10">Entertainment: Books</option>
           <option value="11">Entertainment: Film</option>
@@ -57,7 +58,8 @@
       </div>
     </div>
     <button id="generate-quiz" onclick="getQuizOptions()">Confirm Selections</button>
-  
+    <div id="quiz-container"></div>
+
   <script src="app.js"></script>
 </body>
 </html>

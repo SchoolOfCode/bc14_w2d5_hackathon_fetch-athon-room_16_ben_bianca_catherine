@@ -63,7 +63,7 @@ function welcomeAlert() {
 }
 welcomeAlert();
 // Instructions button
-let instructionsButton = document.getElementById('#instructions');
+let instructionsButton = document.getElementById('instructions');
 // Display instructions on how to play the game
 function instructions() {
   let instructions = window.alert('Instructions: \n 1. Choose a category \n 2. Choose a difficulty level \n 3. Choose the number of questions \n 4. Click the Generate Quiz button \n 5. Answer the questions \n 6. Click the Submit button \n 7. See your score');
@@ -108,7 +108,7 @@ function getQuizOptions() {
       });
       //console.log("Quiz questions:", quizQuestions[0].question);
       // Do something with the quizQuestions array, like display the questions to the user
-    
+      displayQuizQuestions(quizQuestions);
       //console.log(data)// Do something with the API response data, like display the quiz questions
     })
     // call a function 
@@ -118,10 +118,74 @@ function getQuizOptions() {
 
   //console.log("Selected Category:", category);
   //console.log("Selected Difficulty:", difficulty);
-
 }
-let quizOptions2 = getQuizOptions();
-console.log(quizOptions2);
+    
+function displayQuizQuestions(quizQuestions) {
+  // Get a reference to the quiz container element
+  const quizContainer = document.querySelector("#quiz-container");
+
+  quizContainer.innerHTML = "";
+
+  const userAnswer = {};
+
+  // Loop through each quiz question and create a new element to display it
+  quizQuestions.forEach((question, index) => {
+    const questionElement = document.createElement("div");
+    questionElement.textContent = `${index + 1}. ${question.question}`;
+    quizContainer.appendChild(questionElement);
+
+    const trueButton = document.createElement("button");
+    trueButton.textContent = "True";
+    questionElement.appendChild(trueButton);
+
+    const falseButton = document.createElement("button");
+    falseButton.textContent = "False";
+    questionElement.appendChild(falseButton);
+
+    // Add event listeners to the true/false buttons
+    trueButton.addEventListener("click", () => {
+      selectAnswer("True", question.correctAnswer);
+  });
+
+    falseButton.addEventListener("click", () => {
+      selectAnswer("False", question.correctAnswer);
+  });
+
+  // Function to select the user's answer and store it in the userAnswers object
+  function selectAnswer(selectedButton, otherButton, answer) {
+    // Add CSS class to selected button to style as selected
+    selectedButton.classList.add("selected");
+
+    // Remove CSS class from other button to style as unselected
+    otherButton.classList.remove("selected");
+
+    // Store the user's answer for this question in the userAnswers object
+    userAnswers[index] = answer;
+}
+  });
+}
+
+// Function to calculate the user's score
+function calculateScore() {
+  let score = 0;
+
+  quizQuestions.forEach((question, index) => {
+      if (userAnswers[index] === question.correctAnswer) {
+          // User's answer is correct
+          score++;
+      }
+  });
+
+  return score;
+}
+
+
+// Example usage:
+// Call calculateScore() after the user has answered all questions to get the user's score
+console.log(`Your score is ${calculateScore()} out of ${quizQuestions.length}.`);
+
+//let quizOptions2 = getQuizOptions();
+//console.log(quizOptions2);
 //console.log(getQuizOptions());
 
 const generateQuizButton = document.getElementById('generate-quiz');
