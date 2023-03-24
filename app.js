@@ -89,17 +89,29 @@ document.getElementById('playerName').textContent = playerName;
 let category = document.getElementById('category-select').value;
 let difficulty = document.getElementById('difficulty-select').value;
 
+let quizQuestions = [];
+
 function getQuizOptions() {
   const category = document.querySelector("#category-select").value;
   const difficulty = document.querySelector("#difficulty-select").value;
 
-  const apiUrl = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
+  const apiUrl = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=boolean`;
   
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-      console.log(data)// Do something with the API response data, like display the quiz questions
+      const quizQuestions = data.results.map(result => {
+        return {
+          question: result.question,
+          correctAnswer: result.correct_answer
+        };
+      });
+      //console.log("Quiz questions:", quizQuestions[0].question);
+      // Do something with the quizQuestions array, like display the questions to the user
+    
+      //console.log(data)// Do something with the API response data, like display the quiz questions
     })
+    // call a function 
     .catch(error => {
       console.error("Error fetching quiz questions:", error);
     });
@@ -108,12 +120,13 @@ function getQuizOptions() {
   //console.log("Selected Difficulty:", difficulty);
 
 }
-
+let quizOptions2 = getQuizOptions();
+console.log(quizOptions2);
 //console.log(getQuizOptions());
 
 const generateQuizButton = document.getElementById('generate-quiz');
 
-async function getQuote() {
+/*async function getQuote() {
 
   let category = 12;
 
@@ -124,5 +137,5 @@ async function getQuote() {
   let question = data.results[0].question;
   //console.log(question);
   // return data.results[0].question;
-}
+}*/
 
