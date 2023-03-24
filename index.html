@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="page-title">
+    <h1>RANDOM TRIVIA GENERATOR</h1>
+
+    </div>
+  
   <div id="instruction-section">
     <button id="instructions" onclick="instructions()">Instructions</button>
   </div>
@@ -15,7 +20,7 @@
     <h1 id="playerName"></h1>
   </div>
   <div id="quiz-generator-section">
-    <h1>Please choose your game options</h1>
+    <h2>Please choose your game options:</h2>
     <div id="quiz-options">
       <div id="category">
         <label for="category">Category</label>
@@ -47,7 +52,7 @@
           <option value="32">Entertainment: Cartoon & Animations</option>
         </select>
       </div>
-      <div id="difficulty">
+      <div id="difficulty" class="dropdown-choice">
         <label for="difficulty">Difficulty</label>
         <select name="difficulty" id="difficulty-select">
           <option disabled selected>Select Difficulty<option>
@@ -57,7 +62,7 @@
         </select>
       </div>
     </div>
-    <button id="generate-quiz" onclick="getQuizOptions()">Confirm Selections</button>
+    <button id="generate-quiz" onclick="getQuizOptions()">Generate Quiz!</button>
     <div id="quiz-container"></div>
 
   <script src="app.js"></script>

@@ -1,4 +1,50 @@
-button.selected {
-  background-color: #4CAF50;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: #f2f2f2d9;
+  margin-left: 50px;
+}
+
+div {
+  margin-bottom: 30px;
+
+}
+
+#quiz-container {
+  width: 100%;
+}
+
+select {
+  width: 30%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.dropdown-choice {
+  margin-left: 6px;
+}
+
+button {
+  margin-bottom: 30px;
+  background-color: rgb(10, 71, 150);
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+label {
+  margin-right: 10px;
 }
