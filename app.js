@@ -13,15 +13,15 @@ Section 4 - Score Board
 
 *** Task 0 - Welcome and instructions
 
-- Display a welcome message X
-- Display instructions on how to play the game X
-- Have instructions on a toggle button that shows or hides the instructions x
+- Display a welcome message ✅
+- Display instructions on how to play the game ✅
+- Have instructions on a toggle button that shows or hides the instructions ✅
 
 *** Task 1 - Player Profile
 
-- Prompt the user for their name
-- Store the name in a variable
-- Display the name in the player profile section
+- Prompt the user for their name ✅
+- Store the name in a variable ✅
+- Display the name in the player profile section (h1) ✅
 
 
 *** Task 2 - Quiz Generator
@@ -89,4 +89,10 @@ function instructions() {
   console.log(instructions)
   return instructions;
 }
+
+// Task 1 - Player Profile
+
+let playerName = prompt('Please enter your name');
+
+document.getElementById('playerName').textContent = playerName;
 
