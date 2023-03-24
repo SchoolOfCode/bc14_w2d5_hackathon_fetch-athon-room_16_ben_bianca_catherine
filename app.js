@@ -30,16 +30,16 @@ Some limitations to be placed on available options
 
 - choose from 5 categories - gen knowledge (9), music (12), film (11), science (17), celebs (26) ✅
 - choose from 3 difficulty levels (only if time allows) ✅
-- button to generate quiz
+- button to generate quiz ✅
 
 
-display dropdown menu with options for categories
-create a function that requests the api using string interpolation based on user selections
-retrieve the data from the api and store in a variable
+display dropdown menu with options for categories ✅
+create a function that requests the api using string interpolation based on user selections ✅
+retrieve the data from the api and store in a variable ✅
 
 *** Task 3 - Game Area
 
-- Ask each question one at a time and wait for the user to answer
+- Ask each question ✅ (one at a time and wait for the user to answer)
 - When an answer is received, check if it is correct and store the result
 - Ask next question
 
@@ -126,8 +126,6 @@ function displayQuizQuestions(quizQuestions) {
 
   quizContainer.innerHTML = "";
 
-  const userAnswer = {};
-
   // Loop through each quiz question and create a new element to display it
   quizQuestions.forEach((question, index) => {
     const questionElement = document.createElement("div");
@@ -144,6 +142,54 @@ function displayQuizQuestions(quizQuestions) {
 
     // Add event listeners to the true/false buttons
     trueButton.addEventListener("click", () => {
+      checkAnswer("True", question.correctAnswer);
+  });
+
+  falseButton.addEventListener("click", () => {
+      checkAnswer("False", question.correctAnswer);
+  });
+
+  // Function to check the user's answer against the correct answer
+  function checkAnswer(userAnswer, correctAnswer) {
+      if (userAnswer === correctAnswer) {
+          // User's answer is correct
+          const correctAnswerElement = document.createElement("div");
+          correctAnswerElement.textContent = "Correct!";
+          questionElement.appendChild(correctAnswerElement);
+         // console.log("Correct!");
+      } else {
+          // User's answer is incorrect
+          const incorrectAnswerElement = document.createElement("div");
+          incorrectAnswerElement.textContent = "Incorrect!";
+          questionElement.appendChild(incorrectAnswerElement);
+         // console.log("Incorrect!");
+      }
+  }
+  });
+/* function displayQuizQuestions(quizQuestions) {
+  // Get a reference to the quiz container element
+  const quizContainer = document.querySelector("#quiz-container");
+
+  quizContainer.innerHTML = "";
+
+  const userAnswer = {};
+
+  // Loop through each quiz question and create a new element to display it
+  quizQuestions.forEach((question, index) => {
+    const questionElement = document.createElement("div");
+    questionElement.textContent = `${index + 1}. ${question.question}`;
+    quizContainer.appendChild(questionElement);
+
+    const trueButton = document.createElement("button");
+    trueButton.textContent = "True";
+    questionElement.appendChild(trueButton);
+
+    const falseButton = document.createElement("button");
+    falseButton.textContent = "False";
+    questionElement.appendChild(falseButton);
+/*
+    // Add event listeners to the true/false buttons
+    trueButton.addEventListener("click", () => {
       selectAnswer("True", question.correctAnswer);
   });
 
@@ -153,16 +199,16 @@ function displayQuizQuestions(quizQuestions) {
 
   // Function to select the user's answer and store it in the userAnswers object
   function selectAnswer(selectedButton, otherButton, answer) {
-    // Add CSS class to selected button to style as selected
+    /* Add CSS class to selected button to style as selected
     selectedButton.classList.add("selected");
 
     // Remove CSS class from other button to style as unselected
     otherButton.classList.remove("selected");
 
     // Store the user's answer for this question in the userAnswers object
-    userAnswers[index] = answer;
+    userAnswers[index] = answer; 
 }
-  });
+);
 }
 
 // Function to calculate the user's score
@@ -178,7 +224,13 @@ function calculateScore() {
 
   return score;
 }
+*/
+// console.log(calculateScore());
 
+
+
+
+}
 
 // Example usage:
 // Call calculateScore() after the user has answered all questions to get the user's score
