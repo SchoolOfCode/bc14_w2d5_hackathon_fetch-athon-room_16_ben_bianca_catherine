@@ -28,10 +28,8 @@ Section 4 - Score Board
 
 Some limitations to be placed on available options
 
-- choose up to 10 questions
-- choose from 5 categories - gen knowledge (9), music (12), film (11), science (17), celebs (26)
-- choose from 3 difficulty levels (only if time allows)
-- questions to be multiple choice
+- choose from 5 categories - gen knowledge (9), music (12), film (11), science (17), celebs (26) ✅
+- choose from 3 difficulty levels (only if time allows) ✅
 - button to generate quiz
 
 
@@ -56,23 +54,6 @@ retrieve the data from the api and store in a variable
 
 */
 
-async function getQuote() {
-
-  let category = 12;
-
-  const response = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=boolean`);
-  const data = await response.json();
-
-  document.getElementById('question').textContent = data.results[0].question;
-  document.getElementById('answer').textContent = data.results[0].correct_answer;
-  let question = data.results[0].question;
-  console.log(question);
-  // return data.results[0].question;
-}
-
-
-
-console.log(getQuote());
 
 // Section 0 - welcome and instructions
 // Display a welcome message
@@ -86,7 +67,7 @@ let instructionsButton = document.getElementById('#instructions');
 // Display instructions on how to play the game
 function instructions() {
   let instructions = window.alert('Instructions: \n 1. Choose a category \n 2. Choose a difficulty level \n 3. Choose the number of questions \n 4. Click the Generate Quiz button \n 5. Answer the questions \n 6. Click the Submit button \n 7. See your score');
-  console.log(instructions)
+  //console.log(instructions)
   return instructions;
 }
 
@@ -95,4 +76,53 @@ function instructions() {
 let playerName = prompt('Please enter your name');
 
 document.getElementById('playerName').textContent = playerName;
+
+
+
+// Task 2 - Quiz Generator
+
+//const categoryChoice = document.getElementById('category-select');
+//const categorySelection = categoryChoice.value;
+
+// create a function to save the players quiz choices and stores them as variables
+
+let category = document.getElementById('category-select').value;
+let difficulty = document.getElementById('difficulty-select').value;
+
+function getQuizOptions() {
+  const category = document.querySelector("#category-select").value;
+  const difficulty = document.querySelector("#difficulty-select").value;
+
+  const apiUrl = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
+  
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)// Do something with the API response data, like display the quiz questions
+    })
+    .catch(error => {
+      console.error("Error fetching quiz questions:", error);
+    });
+
+  //console.log("Selected Category:", category);
+  //console.log("Selected Difficulty:", difficulty);
+
+}
+
+//console.log(getQuizOptions());
+
+const generateQuizButton = document.getElementById('generate-quiz');
+
+async function getQuote() {
+
+  let category = 12;
+
+  const response = await fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=boolean`);
+  const data = await response.json();
+
+  
+  let question = data.results[0].question;
+  //console.log(question);
+  // return data.results[0].question;
+}
 
