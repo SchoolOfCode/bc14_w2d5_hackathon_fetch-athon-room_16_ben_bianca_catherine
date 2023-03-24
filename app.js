@@ -13,9 +13,9 @@ Section 4 - Score Board
 
 *** Task 0 - Welcome and instructions
 
-- Display a welcome message
-- Display instructions on how to play the game
-- Have instructions on a toggle button that shows or hides the instructions
+- Display a welcome message X
+- Display instructions on how to play the game X
+- Have instructions on a toggle button that shows or hides the instructions x
 
 *** Task 1 - Player Profile
 
@@ -73,3 +73,20 @@ async function getQuote() {
 
 
 console.log(getQuote());
+
+// Section 0 - welcome and instructions
+// Display a welcome message
+function welcomeAlert() {
+  let welcome = alert('Welcome to the Quiz Generator');
+  return welcome;
+}
+welcomeAlert();
+// Instructions button
+let instructionsButton = document.getElementById('#instructions');
+// Display instructions on how to play the game
+function instructions() {
+  let instructions = window.alert('Instructions: \n 1. Choose a category \n 2. Choose a difficulty level \n 3. Choose the number of questions \n 4. Click the Generate Quiz button \n 5. Answer the questions \n 6. Click the Submit button \n 7. See your score');
+  console.log(instructions)
+  return instructions;
+}
+
