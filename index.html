@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="page-title">
+    <h1>RANDOM TRIVIA GENERATOR</h1>
+
+    </div>
+  
+  <div id="instruction-section">
+    <button id="instructions" onclick="instructions()">Instructions</button>
+  </div>
+  <div id="player-profile-section">
+    <h1 id="playerName"></h1>
+  </div>
+  <div id="quiz-generator-section">
+    <h2>Please choose your game options:</h2>
+    <div id="quiz-options">
+      <div id="category">
+        <label for="category">Category</label>
+        <select name="category" id="category-select">
+          <option disabled selected>Select Category</option>
+          <option value="9">General Knowledge</option>
+          <option value="10">Entertainment: Books</option>
+          <option value="11">Entertainment: Film</option>
+          <option value="12">Entertainment: Music</option>
+          <option value="13">Entertainment: Musicals & Theatres</option>
+          <option value="14">Entertainment: Television</option>
+          <option value="15">Entertainment: Video Games</option>
+          <option value="16">Entertainment: Board Games</option>
+          <option value="17">Science & Nature</option>
+          <option value="18">Science: Computers</option>
+          <option value="19">Science: Mathematics</option>
+          <option value="20">Mythology</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="24">Politics</option>
+          <option value="25">Art</option>
+          <option value="26">Celebrities</option>
+          <option value="27">Animals</option>
+          <option value="28">Vehicles</option>
+          <option value="29">Entertainment: Comics</option>
+          <option value="30">Science: Gadgets</option>
+          <option value="31">Entertainment: Japanese Anime & Manga</option>
+          <option value="32">Entertainment: Cartoon & Animations</option>
+        </select>
+      </div>
+      <div id="difficulty" class="dropdown-choice">
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty-select">
+          <option disabled selected>Select Difficulty<option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+    <button id="generate-quiz" onclick="getQuizOptions()">Generate Quiz!</button>
+    <div id="quiz-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
